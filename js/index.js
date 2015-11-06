@@ -1,9 +1,8 @@
-//var test = document.getElementsByTagName("STYLE");
-//var test = document.getElementsByClassName("jumbotron");
 var jumbo = document.getElementById("jumbotron");
 var images = [];
-var x = 0;
+
 var buildImages = function () {
+	//builds array of image location strings
 	for (var i = 1; i < 60; i++){
 		if (i < 10){
 			images.push('url("images/pdxcg_0' + i + '.jpg")');
@@ -13,21 +12,17 @@ var buildImages = function () {
 		}		
 	}
 }
+
 var changeImage = function () {
+	//cycles through background image
+	var x;
     jumbo.style.backgroundImage = images[x];
     x++;
-    if(x >= images.length){
-        x = 0;        
-    }
+    x = (x % 60); // cycles back to zero when x = 60
 }
+
 buildImages();
-setInterval("changeImage()", 1000);
-
-
-
-	// if (current < 9) {
-	// 	current += 1
-	// 	img = "../images/pdxcg_0" + current + ".jpg"
-	// }
+setInterval("changeImage()", 20000);
+//calls changeImage to cycle at 20 seconds
 
 
